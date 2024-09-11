@@ -6,7 +6,7 @@ The use of Variable*/
 public class Main {
   public static void main(String[] args) {
   
-  String name= "Anna";
+  String name= "Osmen";
   int age= 18;
   int fNum= 10;
   int sNum= 3;
@@ -19,6 +19,8 @@ public class Main {
   float itemPrice= 25.95f;
   char symbol='$';
   boolean value= true;
+  boolean isAdult = age >= 18;
+  
   //display of the variables
     System.out.println("Hi, I'm " + name + ".");
     System.out.println("I\"m " + age + " years old." );
@@ -28,6 +30,8 @@ public class Main {
      System.out.println("The product is " + pro);
     System.out.println("The quotient is " + qou);
     System.out.println("The remainder is " + rem);
+    System.out.println(isAdult);
+    System.out.println("UC"*100);
    
   }
 }
