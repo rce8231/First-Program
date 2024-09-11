@@ -1,0 +1,49 @@
+public class CC2Garden {
+    public static void main(String[] args) {
+        //area = length * width
+        //perimeter = 2 * (length + width)
+        //Gives Values
+        int length = 20; //meters
+        int width = 10; //meters
+        
+        //Calculations
+        int area = length * width;
+        int perimter = 2 * (length + width);
+        
+        //Output
+        System.out.println("Length : " + length + " meters");
+        System.out.println("Width : " + width + " meters");
+        System.out.println("Area : " + area + " meters");
+        System.out.println("Perimeter : " + perimter + " meters");   
+    }
+}
+
+with the use of scanners
+
+import java.util.Scanner;
+public class Rectangle {
+    public static void main(String[] args) {
+       //Area = length * width
+       //Perimeter = 2 * (length + width)
+       
+       Scanner scanner = new Scanner(System.in);
+       
+       int length = 0;
+       int width = 0;
+       int area = 0;
+       int perimeter = 0;
+       
+       System.out.print("Enter the length of the Rectangle : ");
+       length = scanner.nextInt();
+       
+       System.out.print("Enter the length of the Rectangle : ");
+       width = scanner.nextInt();
+       
+       area = length * width;
+       perimeter = 2 * (length + width);
+       
+       System.out.println("The area of the Rectangle is : " + area);
+       System.out.println("The perimeter of the Rectangle is : " + perimeter);
+       
+    }
+}
