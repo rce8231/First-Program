@@ -1,0 +1,45 @@
+Richmond C. Efefante
+September 20 2024
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author m303user
+ */
+public class BasicCalculator {
+
+    public static void main(String[] args) {
+      Scanner scanner = new Scanner(System.in);
+      
+      int num1 = 0;
+      int num2 = 0;
+      int sum = 0;
+      int difference = 0;
+      int product = 0;
+      int qoutient = 0;
+      int remainder = 0;
+      
+      System.out.println("Enter first number : ");
+      num1 = scanner.nextInt();
+      
+      System.out.println("Enter second number : ");
+      num2 = scanner.nextInt();
+    
+      //calculator
+      sum = num1 + num2;
+      difference = num1 - num2;
+      product = num1 * num2;
+      qoutient = num1 / num2;
+      remainder = num1 % num2;
+      
+      //output
+      System.out.println("\nChallenge:");
+      System.out.println("The sum of " + num1 + " and " + num2 + " is " + sum );
+      System.out.println("The difference of " + num1 + " and " + num2 + " is " + difference );
+      System.out.println("The product of " + num1 + " and " + num2 + " is " + product );
+      System.out.println("The qoutient of " + num1 + " and " + num2 + " is " + qoutient );
+      System.out.println("The remainder of " + num1 + " and " + num2 + " is " + remainder );
+    }
+    
+}
