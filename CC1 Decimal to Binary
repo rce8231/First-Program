@@ -1,3 +1,5 @@
+//MUST BE IN 4 BITS
+//TO BE CHECKED ON SATURDAY
 import java.util.Scanner;
 
 public class DecimalToBinaryConverter {
