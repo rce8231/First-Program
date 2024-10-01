@@ -1,5 +1,6 @@
 //MUST BE IN 4 BITS
 //TO BE CHECKED ON SATURDAY
+//HEXADECIMAL AND OCTAL
 import java.util.Scanner;
 
 public class DecimalToBinaryConverter {
