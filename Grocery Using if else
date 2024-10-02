@@ -1,0 +1,22 @@
+public static void main(String[] args){
+        //Scanner
+        Scanner scanner = new Scanner(System.in);
+        system.out.prinltn("Enter the total pruchase amount: ");
+        int amount = scanner.nextInt();
+        
+        //Variables
+        double discount, finalPrice;
+        int discountApllied;
+        
+        //else if statements and calculations
+        if(amount<1000){
+            discountApplied = ("0%");
+            discount = (0.00 * amount);
+            finalPrice = (amount - discount);
+        } else if(amount >=1000 && >=5000){
+            discountApplied = ("5%");
+            discount = (0.05 * amount);
+            finalPrice = (amount - discount);
+        }
+    }
+    
