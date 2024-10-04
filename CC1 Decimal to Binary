@@ -34,3 +34,128 @@ public class DecimalToBinaryConverter {
         scanner.close();
     }
 }
+
+ public static void main(String[] args) {
+      
+
+
+  
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to the Character Calculator!");
+
+        while (true) {
+            System.out.print("\nEnter a decimal number, letters (A-Z), or a mixture (or type 'STOP' to end): ");
+            String userInput = sc.nextLine();
+
+            if (userInput.equalsIgnoreCase("STOP")) {
+                System.out.println("\nProgram Terminated.");
+                break;
+            }
+
+            int cumulativeDecimalValue = 0;
+
+            for (char ch : userInput.toCharArray()) {
+                if (Character.isLetter(ch)) {
+                    cumulativeDecimalValue += Character.toUpperCase(ch) - 'A' + 1;
+                } else if (Character.isDigit(ch)) {
+                    cumulativeDecimalValue += Character.getNumericValue(ch);
+                } else {
+                    System.out.println("Invalid character: " + ch);
+                }
+            }
+
+            if (cumulativeDecimalValue > 0) {
+                System.out.println("\nDecimal Representation: " + cumulativeDecimalValue);
+                
+                // Binary representation padded to multiples of 4 bits
+                String binaryString = Integer.toBinaryString(cumulativeDecimalValue);
+                int paddedLength = (binaryString.length() + 3) / 4 * 4; // Round up to the nearest multiple of 4
+                String paddedBinary = String.format("%" + paddedLength + "s", binaryString).replace(' ', '0');
+                
+                // Format in nibbles
+                System.out.println("Binary Representation: " + formatInNibbles(paddedBinary));
+
+                // Octal representation
+                System.out.println("Octal Representation: " + Integer.toOctalString(cumulativeDecimalValue));
+
+                // Hexadecimal representation
+                System.out.println("Hexadecimal Representation: " + Integer.toHexString(cumulativeDecimalValue).toUpperCase());
+            }
+        }
+        sc.close();
+    }
+
+    private static String formatInNibbles(String binary) {
+        StringBuilder nibbleString = new StringBuilder();
+        for (int i = 0; i < binary.length(); i++) {
+            if (i > 0 && i % 4 == 0) {
+                nibbleString.append(" "); // Add space every 4 bits
+            }
+            nibbleString.append(binary.charAt(i));
+        }
+        return nibbleString.toString();
+    }
+
+
+
+
+import java.util.Scanner;
+/**
+ *
+ * @author dd921
+ */
+public class DecimalToBaseConverter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("\nEnter a decimal number, letters (A-Z), or a mixture (or type 'STOP' to end): ");
+            String userInput = sc.nextLine();
+
+            if (userInput.equalsIgnoreCase("STOP")) {
+                System.out.println("\nProgram Terminated.");
+                break;
+            }
+
+            int cumulativeDecimalValue = 0;
+
+            for (char ch : userInput.toCharArray()) {
+                if (Character.isLetter(ch)) {
+                    cumulativeDecimalValue += Character.toUpperCase(ch) - 'A' + 1;
+                } else if (Character.isDigit(ch)) {
+                    cumulativeDecimalValue += Character.getNumericValue(ch);
+                } else {
+                    System.out.println("Invalid character: " + ch);
+                }
+            }
+
+            if (cumulativeDecimalValue > 0) {
+                System.out.println("\nDecimal Representation: " + cumulativeDecimalValue);
+                
+                // Binary representation padded to multiples of 4 bits
+                String binaryString = Integer.toBinaryString(cumulativeDecimalValue);
+                int paddedLength = (binaryString.length() + 3) / 4 * 4; // Round up to the nearest multiple of 4
+                String paddedBinary = String.format("%" + paddedLength + "s", binaryString).replace(' ', '0');
+                
+                // Format binary in nibbles directly in main
+                StringBuilder nibbleString = new StringBuilder();
+                for (int i = 0; i < paddedBinary.length(); i++) {
+                    if (i > 0 && i % 4 == 0) {
+                        nibbleString.append(" "); // Add space every 4 bits
+                    }
+                    nibbleString.append(paddedBinary.charAt(i));
+                }
+
+                // Print formatted binary string
+                System.out.println("Binary Representation: " + nibbleString.toString());
+
+                // Octal representation
+                System.out.println("Octal Representation: " + Integer.toOctalString(cumulativeDecimalValue));
+
+                // Hexadecimal representation
+                System.out.println("Hexadecimal Representation: " + Integer.toHexString(cumulativeDecimalValue).toUpperCase());
+            }
+        }
+        sc.close();
+    }
+}
