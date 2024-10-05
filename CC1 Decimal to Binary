@@ -159,3 +159,87 @@ public class DecimalToBaseConverter {
         sc.close();
     }
 }
+
+akjbfavf
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
+public class UpdatedBinaryCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input;
+
+        while (true) {
+            System.out.print("Enter an operation (e.g., hex F - oct 5 + 3 * bin 1000 / 6) or type 'STOP' to quit: ");
+            input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("STOP")) {
+                break;
+            }
+
+            try {
+                // Replace base specifications with decimal equivalents
+                String decimalExpression = replaceBasesWithDecimal(input);
+
+                // Evaluate the expression
+                ScriptEngineManager manager = new ScriptEngineManager();
+                ScriptEngine engine = manager.getEngineByName("JavaScript");
+                Object result = engine.eval(decimalExpression);
+
+                // Convert result to integer
+                int decimalResult = ((Number) result).intValue();
+
+                // Display results in one line
+                System.out.printf("Result: %d (Binary: %s, Octal: %s, Hexadecimal: %s)%n",
+                        decimalResult,
+                        Integer.toBinaryString(decimalResult),
+                        Integer.toOctalString(decimalResult),
+                        Integer.toHexString(decimalResult).toUpperCase());
+            } catch (ScriptException e) {
+                System.out.println("Invalid expression. Please enter a valid arithmetic expression.");
+            } catch (NumberFormatException e) {
+                System.out.println("Number format error: " + e.getMessage());
+            }
+        }
+
+        System.out.println("Program terminated.");
+        scanner.close();
+    }
+
+    private static String replaceBasesWithDecimal(String expression) {
+        // Replace hexadecimal (e.g., hex F)
+        Pattern hexPattern = Pattern.compile("\\s*hex\\s+([0-9A-Fa-f]+)\\s*");
+        Matcher hexMatcher = hexPattern.matcher(expression);
+        while (hexMatcher.find()) {
+            String hexValue = hexMatcher.group(1);
+            int decimalValue = Integer.parseInt(hexValue, 16);
+            expression = expression.replace(hexMatcher.group(0), String.valueOf(decimalValue));
+        }
+
+        // Replace octal (e.g., oct 5)
+        Pattern octPattern = Pattern.compile("\\s*oct\\s+([0-7]+)\\s*");
+        Matcher octMatcher = octPattern.matcher(expression);
+        while (octMatcher.find()) {
+            String octValue = octMatcher.group(1);
+            int decimalValue = Integer.parseInt(octValue, 8);
+            expression = expression.replace(octMatcher.group(0), String.valueOf(decimalValue));
+        }
+
+        // Replace binary (e.g., bin 1000)
+        Pattern binPattern = Pattern.compile("\\s*bin\\s+([01]+)\\s*");
+        Matcher binMatcher = binPattern.matcher(expression);
+        while (binMatcher.find()) {
+            String binValue = binMatcher.group(1);
+            int decimalValue = Integer.parseInt(binValue, 2);
+            expression = expression.replace(binMatcher.group(0), String.valueOf(decimalValue));
+        }
+
+        // Return the modified expression
+        return expression;
+    }
+}
