@@ -1,0 +1,64 @@
+
+package cc2restaurantordersystem;
+
+import java.util.Scanner;
+
+public class Draft {
+    
+
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("MENU");
+        System.out.println("1. Burger    - PHP 100");
+        System.out.println("2. Fries     - PHP  50");
+        System.out.println("3. Soda      - PHP  30");
+        System.out.println("4. Ice Cream - PHP  45");
+        System.out.println("5. Exit");
+        
+        int choice, quantity, totalAmount;
+        
+        
+        System.out.println("Enter the menu of your choice : ");
+        choice = scanner.nextInt();
+        
+        switch (choice) {
+            case 1:
+                System.out.println("Enter the quantity : ");
+                quantity = scanner.nextInt();
+                totalAmount = quantity * 100;
+                System.out.println("You ordered Burger");
+                System.out.println("Total amount : " + totalAmount + "\sPHP");
+                break;
+            case 2:
+                System.out.println("Enter the quantity : ");
+                quantity = scanner.nextInt();
+                totalAmount = quantity * 50;
+                System.out.println("You ordered Fries");
+                System.out.println("Total amount : " + totalAmount + "\sPHP");
+                break;
+            case 3:
+                System.out.println("Enter the quantity : ");
+                quantity = scanner.nextInt();
+                totalAmount = quantity * 30;
+                System.out.println("You ordered Soda");
+                System.out.println("Total amount : " + totalAmount + "\sPHP");
+                break;
+            case 4:
+                System.out.println("Enter the quantity : ");
+                quantity = scanner.nextInt();
+                totalAmount = quantity * 45;
+                System.out.println("You ordered Ice Cream");
+                System.out.println("Total amount : " + totalAmount + "\sPHP");
+                break;
+            case 5:
+                System.out.println("Bye!!!");
+                break;
+            default:
+                 System.out.println("Invalid selection. Please choose a valid menu item.");
+        }
+        
+       
+    }
+}
