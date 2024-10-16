@@ -1,0 +1,39 @@
+//Richmond C. Efefante
+//IFELSE 
+//October 16 2024
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // Scanner
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the total purchase amount: PHP ");
+        int amount = sc.nextInt();
+        
+        // Variables
+        double finalPrice;
+        String discountApplied;
+        
+        // Else if statements and calculations
+        if (amount <= 1000) {
+            discountApplied = "0%";
+            finalPrice = amount; // No discount
+        } else if (amount <= 5000) {
+            discountApplied = "5%";
+            finalPrice = amount * 0.95; // 5% discount
+        } else if (amount <= 10000) {
+            discountApplied = "10%";
+            finalPrice = amount * 0.90; // 10% discount
+        } else {
+            discountApplied = "15%";
+            finalPrice = amount * 0.85; // 15% discount
+        }
+        
+        // Displaying the output
+        System.out.println("Discount Applied: " + discountApplied);
+        System.out.printf("Final Price After Discount: PHP %.2f%n", finalPrice);
+        
+        sc.close();
+    }
+}
