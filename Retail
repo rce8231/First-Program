@@ -1,0 +1,49 @@
+//Richmond C. Efefante
+//November 21 2024
+//Final Challenge No. 1: Retail Store Inventory Management
+
+package numbers;
+
+import java.util.Scanner;
+
+public class Retail {
+    public static void main(String []args){
+        Scanner ozmin = new Scanner(System.in);
+        
+        double price [] = new double[10];
+        int quantity [] = new int[10];
+        double totalAmount = 0;
+        
+        for(int i = 0; i < 10; i++){
+            boolean validPrice = false;
+            boolean validQuantity = false;
+            
+        if(ozmin.hasNextInt()){
+            System.out.println("Input the Price [" + (i + 1) + "]:");
+            price [i] = ozmin.nextInt();
+            validPrice = true;
+        } else {
+            System.out.println("Invalid input!");
+            ozmin.next();
+        }
+            
+        if(ozmin.hasNextInt()){
+            System.out.println("Input the Quantity [" + (i + 1) + "]:");
+            quantity [i] = ozmin.nextInt();
+            validQuantity = true;
+        } else {
+            System.out.println("Invalid input!");
+            ozmin.next();
+        }
+        
+         
+        double initialSum = price[i] * quantity[i];
+        totalAmount = totalAmount + initialSum;
+        
+        System.out.println(totalAmount);
+        
+        
+        }
+    }
+            
+}
