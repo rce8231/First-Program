@@ -1,0 +1,30 @@
+//Richmond C. Efefante
+//November 21 2024
+//Final Challenge No. 3: University Course Enrollment and Grades Tracker
+package courseenrollment;
+
+
+public class CourseEnrollment {
+    
+    public static void main(String[] args) {
+        
+        String[] students = {"Osmen", "Mond", "Angel"};
+        
+        int[][] grades = {
+            {98, 97, 99, 97},
+            {94, 97, 98, 96},
+            {99, 98, 99, 96}
+        };
+        
+        for (int student = 0; student < students.length; student++){
+            int sum = 0;
+            
+            for (int subject =0; subject < grades[student].length; subject++){
+                sum = sum + grades[student][subject];
+            }
+            
+        double average = sum / grades[student].length;
+        System.out.println(students[student] + " - Average Grade: " + average);
+        }
+    }  
+}
