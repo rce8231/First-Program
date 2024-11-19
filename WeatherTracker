@@ -1,0 +1,37 @@
+//Richmond C. Efefante
+//November 21 2024
+//Final Challenge No. 2: Weather Data Tracker
+package weather;
+
+public class Weather {
+
+  
+    public static void main(String[] args) {
+          //3 cities, 7 days
+        int[][] temperatures = {
+            {30, 32, 31, 29, 30, 33, 34}, // City 1 temperatures
+            {25, 26, 27, 28, 29, 24, 23}, // City 2 temperatures
+            {35, 36, 37, 38, 34, 33, 32}  // City 3 temperatures
+        };
+        
+        // Process each city
+        for (int city = 0; city < 3; city++) {
+            int sum = 0; // To calculate sum of temperatures
+            int highest = temperatures[city][0]; // Start with first day's temp as highest
+            
+            // Process each day for the current city
+            for (int day = 0; day < 7; day++) {
+                sum = sum + temperatures[city][day]; // Add day's temperature to sum
+                if (temperatures[city][day] > highest) { // Check for highest temp
+                    highest = temperatures[city][day];
+                }
+            }
+            
+            // Calculate and display the average temperature for the city
+            double average = sum / 7.0;
+            System.out.println("City " + (city + 1) + " - Average Temperature: " + average);
+            System.out.println("City " + (city + 1) + " - Highest Temperature: " + highest);
+            System.out.println(); // Blank line for clarity
+        }
+    }
+}
