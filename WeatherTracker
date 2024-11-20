@@ -35,3 +35,37 @@ public class Weather {
         }
     }
 }
+
+//Richmond C. Efefante
+//November 21 2024
+//Final Challenge No. 2: Weather Data Tracker(WIth Scanner)
+package richmond;
+
+import java.util.Scanner;
+
+public class WeatherScanner {
+    public static void main(String[]args){
+        Scanner ozmin = new Scanner(System.in);
+        
+        int[][] temperature = new int[3][7];
+        
+        for (int city = 0; city < 3; city++){
+            System.out.println("Enter the temperatures for City " + (city + 1) + " for 7 days:");
+            int sum = 0; // To calculate sum of temperatures
+            int highest = temperature[city][0];
+            
+            for (int day = 0; day < 7; day++){
+                System.out.print("Day " + (day + 1) + ": ");
+                temperature[city][day] = ozmin.nextInt();
+                sum = sum + temperature[city][day]; // Add day's temperature to sum
+                if (temperature[city][day] > highest) { // Check for highest temp
+                    highest = temperature[city][day];
+            }
+           }
+            double average = sum / 7.0;
+            System.out.println("City " + (city + 1) + " - Average Temperature: " + average);
+            System.out.println("City " + (city + 1) + " - Highest Temperature: " + highest);
+            System.out.println(); // Blank line for clarity
+        }
+    }
+}
