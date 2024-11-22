@@ -1,0 +1,35 @@
+//Richmond C. Efefante
+//November 22, 2024
+//Drawing
+package drawing;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Drawing extends Canvas{
+    
+    public void paint(Graphics ozmin){
+        ozmin.setColor(Color.PINK);
+        //ozmin.drawRect(x,y,width,height);
+        ozmin.drawRect(50,50,150,100);
+        ozmin.setColor(Color.BLACK);
+        ozmin.fillRect(250,50,150,100);
+        ozmin.setColor(Color.RED);//RGB
+        ozmin.drawOval(450,50,100,100);
+        ozmin.setColor(Color.RED);
+        ozmin.fillOval(600,50,100,100);
+        ozmin.drawLine(50, 200, 800, 200);
+        ozmin.drawLine(750, 50, 750, 150);
+        ozmin.drawLine(800, 50, 800, 150);
+    }
+    
+    public static void main(String[] args) {
+        JFrame f = new JFrame("Ozmin's First Drawing");
+        Drawing canvas = new Drawing();
+        f.setSize(1500,500);
+        f.add(canvas);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
+    }
+    
+}
