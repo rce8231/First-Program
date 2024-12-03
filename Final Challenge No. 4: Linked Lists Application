@@ -1,0 +1,174 @@
+//Efefante,Richmond C.
+//December 4. 2024
+//Final Challenge No. 4: Linked Lists Application
+package arrayvslist;
+
+import java.util.Scanner;
+
+class MusicPlaylist {
+    // Node class to represent each song in the playlist
+    private class Node {
+        String song;
+        Node prev, next;
+
+        Node(String song) {
+            this.song = song;
+            this.prev = this;  // Pointing to itself initially
+            this.next = this;  // Pointing to itself initially
+        }
+    }
+
+    private Node current;  // Points to the current song in the playlist
+
+    // Requirement 1: Add a song to the playlist
+    public void addSong(String song) {
+        Node newSong = new Node(song);
+        
+        if (current == null) {
+            current = newSong;  // If playlist is empty, this is the first song
+        } else {
+            Node last = current.prev;  // The node before the current node
+            last.next = newSong;        // Point the last node to the new song
+            newSong.prev = last;        // Point the new song's prev to the last node
+            newSong.next = current;     // Point the new song's next to the current song
+            current.prev = newSong;     // Point the current song's prev to the new song
+        }
+    }
+    
+    // Requirement 2: Remove a song from the playlist, maintaining circular links
+    public void removeSong(String song) {
+        if (current == null) {
+            System.out.println("No songs in the playlist.");
+            return;
+        }
+
+        Node temp = current;
+        do {
+            if (temp.song.equals(song)) {
+                if (temp == current && temp.next == current) {
+                    current = null;  // Only one song in the playlist
+                } else {
+                    temp.prev.next = temp.next;  // Skip the node to remove it
+                    temp.next.prev = temp.prev;  // Maintain the circular link
+                    if (temp == current) {
+                        current = temp.next;  // Move current to the next song
+                    }
+                }
+                System.out.println("Removed song: " + song);
+                return;
+            }
+            temp = temp.next;
+        } while (temp != current);  // Loop until we go back to the starting node
+        System.out.println("Song not found: " + song);
+    }
+    
+    // Requirement 3: Move to the next song in the playlist (loop back to first song if at the end)
+    public void nextSong() {
+        if (current == null) {
+            System.out.println("No songs in the playlist.");
+            return;
+        }
+        current = current.next;  // Move to the next song
+        System.out.println("Now playing: " + current.song);
+    }
+
+    // Requirement 3: Move to the previous song in the playlist (loop back to last song if at the start)
+    public void previousSong() {
+        if (current == null) {
+            System.out.println("No songs in the playlist.");
+            return;
+        }
+        current = current.prev;  // Move to the previous song
+        System.out.println("Now playing: " + current.song);
+    }
+
+    // Display the current song
+    public void displayCurrentSong() {
+        if (current == null) {
+            System.out.println("No songs in the playlist.");
+            return;
+        }
+        System.out.println("Current song: " + current.song);
+    }
+
+    // Display the entire playlist
+    public void displayPlaylist() {
+        if (current == null) {
+            System.out.println("No songs in the playlist.");
+            return;
+        }
+
+        Node temp = current;
+        System.out.println("Playlist:");
+        do {
+            System.out.println(temp.song);
+            temp = temp.next;
+        } while (temp != current);  // Loop back to the starting node
+    }
+
+    // Main method to interact with the playlist
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        MusicPlaylist playlist = new MusicPlaylist();
+        
+        while (true) {
+            // Display menu options
+            System.out.println("\nMusic Playlist Manager");
+            System.out.println("1. Add Song");
+            System.out.println("2. Remove Song");
+            System.out.println("3. Move to Next Song");
+            System.out.println("4. Move to Previous Song");
+            System.out.println("5. Display Current Song");
+            System.out.println("6. Display Playlist");
+            System.out.println("7. Exit");
+            System.out.print("Choose an option: ");
+            
+            int choice = scanner.nextInt();
+            scanner.nextLine();  // Consume the newline character
+
+            switch (choice) {
+                case 1:
+                    // Add Song
+                    System.out.print("Enter song name to add: ");
+                    String songToAdd = scanner.nextLine();
+                    playlist.addSong(songToAdd);
+                    break;
+
+                case 2:
+                    // Remove Song
+                    System.out.print("Enter song name to remove: ");
+                    String songToRemove = scanner.nextLine();
+                    playlist.removeSong(songToRemove);
+                    break;
+
+                case 3:
+                    // Next Song
+                    playlist.nextSong();
+                    break;
+
+                case 4:
+                    // Previous Song
+                    playlist.previousSong();
+                    break;
+
+                case 5:
+                    // Display Current Song
+                    playlist.displayCurrentSong();
+                    break;
+
+                case 6:
+                    // Display Playlist
+                    playlist.displayPlaylist();
+                    break;
+
+                case 7:
+                    // Exit
+                    System.out.println("Exiting the Playlist Manager.");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
