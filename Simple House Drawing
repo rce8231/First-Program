@@ -1,0 +1,57 @@
+// Richmond C. Efefante
+// December 4, 2024
+// House Drawing
+package simplehousedrawing;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class SimpleHouseDrawing extends Canvas {
+    
+    public void paint(Graphics ozmin) {
+        // Drawing the house base (rectangle)
+        ozmin.setColor(Color.CYAN);  
+        ozmin.fillRect(200, 200, 300, 200);  
+        
+        // Simulating the roof with multiple rectangles
+        ozmin.setColor(new Color(139, 69, 19));  
+        
+        // Adjust the roof to be properly aligned with the house base
+        ozmin.fillRect(170, 160, 360, 40); 
+        ozmin.fillRect(180, 140, 340, 40);  
+        ozmin.fillRect(200, 100, 300, 40);  
+        ozmin.fillRect(210, 80, 280, 40);    
+        
+        // Drawing the door (rectangle)
+        ozmin.setColor(new Color(139, 69, 19)); 
+        ozmin.fillRect(320, 300, 60, 100);  
+        
+        // Drawing the left window (rectangle)
+        ozmin.setColor(Color.LIGHT_GRAY);  
+        ozmin.fillRect(230, 230, 50, 50); 
+        
+        // Drawing the right window (rectangle)
+        ozmin.setColor(Color.LIGHT_GRAY);  
+        ozmin.fillRect(420, 230, 50, 50);  
+        
+        // Drawing window panes (white)
+        ozmin.setColor(Color.WHITE);  
+        ozmin.fillRect(255, 230, 5, 50);  
+        ozmin.fillRect(230, 255, 50, 5); 
+        ozmin.fillRect(445, 230, 5, 50);  
+        ozmin.fillRect(420, 255, 50, 5);  
+        
+        // Adding the sun (oval)
+        ozmin.setColor(Color.YELLOW);  
+        ozmin.fillOval(50, 50, 100, 100);  
+    }
+    
+    public static void main(String[] args) {
+        JFrame f = new JFrame("House Drawing");
+        SimpleHouseDrawing canvas = new SimpleHouseDrawing();
+        f.setSize(1200, 600);  
+        f.add(canvas);  
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true); 
+    }
+}
